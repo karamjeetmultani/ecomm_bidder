@@ -29,7 +29,11 @@
 </p>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
-<h1>Bids</h1>
+<br>
+<br>
+<hr>
+<br>
+<h2> Bid Section</h2>
 <table>
   <thead>
     <tr>
@@ -61,7 +65,6 @@
     <% end %>
   </tbody>
 </table>
-<br>
 <% if @bids.where(:user_id => current_user.id).count > 0 %>
   <h1> Already bid for this product </h1>
 <% else %>
@@ -81,6 +84,70 @@
     </div>
     <div class="actions">
       <%= form.submit "Place Bid" %>
+    </div>
+  <% end %>
+<% end %>
+<br>
+<br>
+<hr>
+<br>
+<h2>Review Section</h2>
+<% if @reviews.count > 0 %>
+  <table>
+    <thead>
+      <tr>
+        <!-- <th>User</th> -->
+        <th>Message</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <!-- <td><%# review.user_id %></td> -->
+          <td><%= review.message %></td>
+          <td><%= review.rating %></td>
+          <td><%= link_to 'Show', review %></td>
+          <td>
+            <% if current_user.id == review.from_user_id %>
+              <%= link_to 'Edit', edit_review_path(review) %>
+            <% end %>
+          </td>
+          <td>
+            <% if current_user.id == review.from_user_id %>
+              <% link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Delete', review_path(id: review), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </td>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <h1>No Reviews </h1>
+<% end %>
+<% if @reviews.count > 0 %>
+  <h1> Already Reviewed! </h1>
+<% else %>
+  Please write a Review about the product 
+  <h1><%= @product.name %></h1>
+  <%# link_to 'New Review', new_bid_path %>
+  <%= form_with model: @review,url: "/heaven/create_product_review", :method => 'post' do |form| %>
+    <div class="field">
+      <%# form.label :user_id %>
+      <%= form.hidden_field :product_id, :value =>  @product.id%>
+    </div>
+    <div class="field">
+      <%= form.label :message %>
+      <%= form.text_field :message %>
+    </div>
+    <div class="field">
+      <%= form.label :rating %>
+      <%= form.select :rating, [1,2,3,4,5]%>
+    </div>
+    <div class="actions">
+      <%= form.submit "Submit" %>
     </div>
   <% end %>
 <% end %>

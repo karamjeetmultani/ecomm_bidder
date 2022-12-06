@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
     # debugger
     puts "\n\n end\n\n"
     @bids = @product.bids
+    @reviews = Review.where(:product_id => @product.id)
   end
 
   # GET /products/new

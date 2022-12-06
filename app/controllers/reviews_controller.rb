@@ -47,24 +47,26 @@ class ReviewsController < ApplicationController
     end
   end
 
+  # redirect_to request.referer
   # DELETE /reviews/1 or /reviews/1.json
   def destroy
     @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
+      # format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
+      format.html { redirect_to request.referer, notice: "Review was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:user_id, :product_id, :message, :rating)
-    end
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(:user_id, :product_id, :message, :rating)
+  end
 end

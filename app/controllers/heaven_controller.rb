@@ -35,4 +35,13 @@ class HeavenController < ApplicationController
     Review.create(:from_user_id => current_user.id, :message => params["review"]["message"], :user_id => params["review"]["user_id"], :rating => params["review"]["rating"])
     redirect_to request.referer
   end
+
+  def create_product_review
+    puts "params is #{params}"
+    # debugger
+    puts "end"
+    # Review.create(:from_user_id => current_user.id, :message => params["review"]["message"], :user_id => params["review"]["to_user_id"])
+    Review.create(:from_user_id => current_user.id, :message => params["message"], :product_id => params["product_id"], :rating => params["rating"])
+    redirect_to request.referer
+  end
 end
