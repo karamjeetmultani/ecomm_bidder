@@ -3,7 +3,8 @@ class HeavenController < ApplicationController
     puts("\n\n\n\n\nhi")
     # byebug
     puts("end")
-    @products = Product.where(:bid_enable => true, :bid_status => "open").order(:user_id)
+    @current_user_products = Product.where(:bid_enable => true, :bid_status => "open", :user_id => current_user.id)
+    @non_current_user_products = Product.where(:bid_enable => true, :bid_status => "open").where.not(:user_id => current_user.id).order(:user_id)
   end
 
   def show_user
@@ -35,4 +36,3 @@ class HeavenController < ApplicationController
     redirect_to request.referer
   end
 end
-
