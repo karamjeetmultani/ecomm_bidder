@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+<p>
+  <strong>Barcode:</strong>
+  <%= @product.barcode %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @product.user_id %>
+</p>
+<p>
+  <strong>Bid enable:</strong>
+  <%= @product.bid_enable %>
+</p>
+<p>
+  <strong>Bid status:</strong>
+  <%= @product.bid_status %>
+</p>
+<p>
+  <strong>Bid Timer:</strong>
+  <%= @product.bid_timer %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+<h1>Bids</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>User</th>
+      <th>Bid price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bids.each do |bid| %>
+      <tr>
+        <td><%= bid.product_id %></td>
+        <td><%= bid.user_id %></td>
+        <td><%= bid.bid_price %></td>
+        <td><%= link_to 'Show', bid %></td>
+        <td>
+          <% if bid.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_bid_path(bid) %>
+          <% end %>
+        </td>
+        <td>
+          <% if bid.user_id == current_user.id %>
+            <%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Delete', bids_delete_bid_path(id: bid), method: :post, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<% if @bids.where(:user_id => current_user.id).count > 0 %>
+  <h1> Already bid for this product </h1>
+<% else %>
+  <%= link_to 'New Bid', new_bid_path %>
+  <%= form_with model: @bid,url: "/bids/bid_create", :method => 'post' do |form| %>
+    <div class="field">
+      <%= form.label :product_id %>
+      <%= form.number_field :product_id, :value =>  @product.id%>
+    </div>
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.number_field :user_id, :value => current_user.id %>
+    </div>
+    <div class="field">
+      <%= form.label :bid_price %>
+      <%= form.text_field :bid_price %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Place Bid" %>
+    </div>
+  <% end %>
+<% end %>

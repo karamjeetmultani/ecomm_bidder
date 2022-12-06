@@ -1,0 +1,47 @@
+<h1>Heaven#index</h1>
+<p>Find me in app/views/heaven/index.html.erb</p>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Barcode</th>
+      <th>User</th>
+      <th>Bid enable</th>
+      <th>Bid status</th>
+      <th>Price</th>
+      <th>Bid Timer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.barcode %></td>
+        <td>
+        	<% User.find(product.user_id) do |usr| %>
+        	<%= usr.first_name %>
+        	<%= link_to usr.first_name, heaven_show_user_path(:user_id => usr.id) %>
+
+        	<% end %>
+        		
+    	</td>
+        <td><%= product.bid_enable %></td>
+        <td><%= product.bid_status %></td>
+        <td><%= product.price %></td>
+        <td><%= product.bid_timer %></td>
+        <td><%= link_to 'Show', product %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
