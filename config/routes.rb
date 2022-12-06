@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   post 'bids/bid_create'
   post 'bids/delete_bid'
   root to: "heaven#index"
+  post 'heaven/create_review'
 end

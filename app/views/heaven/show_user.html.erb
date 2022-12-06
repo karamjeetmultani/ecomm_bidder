@@ -1,2 +1,43 @@
-<h1>Heaven#show_user</h1>
-<p>Find me in app/views/heaven/show_user.html.erb</p>
+<Heaven#show_user
+Find me in app/views/heaven/show_user.html.erb
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Message</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.user_id %></td>
+        <td><%= review.message %></td>
+        <td><%= review.rating %></td>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<% if @reviews.count > 0 %>
+  <h1> Already Reviewed! </h1>
+<% else %>
+  <%= link_to 'New Review', new_bid_path %>
+  <%= form_with model: @review,url: "/heaven/create_review", :method => 'post' do |form| %>
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.number_field :user_id, :value =>  @user.id%>
+    </div>
+    <div class="field">
+      <%= form.label :message %>
+      <%= form.text_field :message %>
+    </div>
+    <div class="field">
+      <%= form.label :rating %>
+      <%= form.select :rating, [1,2,3,4,5]%>
+    </div>
+    <div class="actions">
+      <%= form.submit "Place Bid" %>
+    </div>
+  <% end %>
+<% end %>

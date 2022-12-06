@@ -83,6 +83,7 @@ class CreateTables < ActiveRecord::Migration[5.2]
       t.integer "product_id"
       t.text "message"
       t.decimal "rating"
+      t.integer "from_user_id"
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
     end

@@ -53,7 +53,7 @@
         </td>
         <td>
           <% if bid.user_id == current_user.id %>
-            <%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %>
             <%= link_to 'Delete', bids_delete_bid_path(id: bid), method: :post, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </td>
