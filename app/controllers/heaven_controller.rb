@@ -1,4 +1,7 @@
 class HeavenController < ApplicationController
+  def home
+  end
+
   def index
     puts("\n\n\n\n\nhi")
     # byebug

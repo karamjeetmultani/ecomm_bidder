@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get 'heaven/show_user'
   post 'bids/bid_create'
   post 'bids/delete_bid'
-  root to: "heaven#index"
+  # root to: "heaven#index"
+  # get heaven/index"
+  root to: "heaven#home"
   post 'heaven/create_review'
   post 'heaven/create_product_review'
 end
