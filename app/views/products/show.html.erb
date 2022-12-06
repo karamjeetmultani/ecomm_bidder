@@ -68,7 +68,7 @@
 <% if @bids.where(:user_id => current_user.id).count > 0 %>
   <h1> Already bid for this product </h1>
 <% else %>
-  <%= link_to 'New Bid', new_bid_path %>
+  <%# link_to 'New Bid', new_bid_path %>
   <%= form_with model: @bid,url: "/bids/bid_create", :method => 'post' do |form| %>
     <div class="field">
       <%= form.label :product_id %>
