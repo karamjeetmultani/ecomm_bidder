@@ -4,9 +4,9 @@
 -- 1) Create Database
 
 show databases;
-DROP database ebidder_development5;
-create database ebidder_development5;
-use ebidder_development5;
+DROP database ebidder_development8;
+create database ebidder_development8;
+use ebidder_development8;
 
 
 -- 2) Create Tables

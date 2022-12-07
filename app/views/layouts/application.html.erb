@@ -11,14 +11,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false', async: true %>
   </head>
   <body>
+    <%= DateTime.now %> <br>
     <% if current_user %>
       Welcome <%= current_user.first_name %>, <%= current_user.last_name %> <%= current_user.email %> <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <br>
       <hr>
       <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'Home', root_path, method: :get %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Dashboard', heaven_index_path, method: :get %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'Dashboard', heaven_index_path, method: :get %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'Orders', orders_path, method: :get %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'Products', heaven_products_path, method: :get %>
       <br>
       <br>
       <hr>

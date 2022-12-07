@@ -47,4 +47,8 @@ class HeavenController < ApplicationController
     Review.create(:from_user_id => current_user.id, :message => params["message"], :product_id => params["product_id"], :rating => params["rating"])
     redirect_to request.referer
   end
+
+  def products
+    @products = current_user.products
+  end
 end
