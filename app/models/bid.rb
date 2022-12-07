@@ -1,5 +1,7 @@
 class Bid < ApplicationRecord
   before_update :check_bid_enable_edited
+  before_create :check_bid_enable_edited
+  before_save :check_bid_enable_edited
 
   private
   def check_bid_enable_edited
