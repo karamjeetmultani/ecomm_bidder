@@ -36,3 +36,4 @@ end
 #usr2.create_role(:role_type => 'normal')
 AddressType.create(:address_type => "billing")
 AddressType.create(:address_type => "shipping")
+User.update_all(:notification_enable => true)

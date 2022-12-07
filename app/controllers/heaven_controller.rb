@@ -51,4 +51,7 @@ class HeavenController < ApplicationController
   def products
     @products = current_user.products
   end
+  def messages
+    @notifications = current_user.notifications
+  end
 end

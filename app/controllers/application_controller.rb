@@ -16,4 +16,6 @@ class ApplicationController < ActionController::Base
     end
     puts "\n\n\n\n\n\n\naccess is #{@access}\n\n\n\n\n\n"
   end
+
+
 end

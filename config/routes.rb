@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   post 'heaven/create_review'
   post 'heaven/create_product_review'
   get 'heaven/products'
+  get 'heaven/messages'
 end

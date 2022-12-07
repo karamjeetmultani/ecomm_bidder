@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :products
   has_one :role
   has_many :reviews
+  has_many :notifications
 end
