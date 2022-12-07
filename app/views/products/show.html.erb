@@ -21,10 +21,10 @@
 </p>
 <p>
   <strong>Bid Timer:</strong>
-  <% if(@product.bid_timer) %>
-    <% timer = (((@product.bid_timer - DateTime.now)* 24 * 60 * 60).to_i)/(24*60*60) %>
-    <% if(timer.to_i > 0) %>
-      <%= timer.to_i %> seconds left
+  <% if(product.bid_timer) %>
+    <% sec = (((product.bid_timer - DateTime.now)* 24 * 60 * 60).to_i)/(24*60*60).to_i %>
+    <% if(sec > 0) %>
+      <%= [sec / 3600, sec / 60 % 60, sec % 60].map{|t| t.to_s.rjust(2,'0')}.join(':') %> time Left
     <% else %>
       <span style="color: red">Sold Out</span>
     <% end %>
