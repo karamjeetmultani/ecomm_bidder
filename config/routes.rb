@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   post 'heaven/create_product_review'
   get 'heaven/products'
   get 'heaven/messages'
+  get 'heaven/notification_toggle'
 end

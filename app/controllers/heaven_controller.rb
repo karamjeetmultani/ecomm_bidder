@@ -54,4 +54,24 @@ class HeavenController < ApplicationController
   def messages
     @notifications = current_user.notifications.order(updated_at: :desc)
   end
+
+  def notification_toggle
+    puts params.has_key?(:user_id)
+    # debugger
+    if params.has_key?(:user_id)
+      puts "check 1"
+      @user = User.find(params["user_id"])
+      if(@user.notification_enable)
+        @user.update(:notification_enable => false)
+      else
+        @user.update(:notification_enable => true)
+      end
+      redirect_to request.referer
+
+    else
+      puts "check 2"
+      render text: 'No User found', cosntent_type: 'text/plain'
+      # response.body
+    end
+  end
 end

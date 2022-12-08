@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-(0..4).each do |usr|
+(0..6).each do |usr|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   puts first_name
@@ -42,4 +42,5 @@ AddressType.create(:address_type => "shipping")
 User.update_all(:notification_enable => true)
 User.find(1).update(:first_name => "Karamjeet", :last_name => "Singh")
 User.find(2).update(:first_name => "Jacob", :last_name => "Dichter")
-User.find(3).update_attributes(:notification_enable => false)
+User.find(3).update(:first_name => "John", :last_name => "Keating")
+User.find(4).update_attributes(:notification_enable => false)

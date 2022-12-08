@@ -1,3 +1,62 @@
+<p id="notice"><%= notice %></p>
+<% if(@user) %>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+  <br>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+  <br>
+  <strong>User:</strong>
+  <%= @user.email %>
+  <br>
+  <strong>Bid enable:</strong>
+  <%= @user.phone_number %>
+  <br>
+  <strong>Created At:</strong>
+  <%= @user.created_at %>
+  <br>
+  <strong>Updated At:</strong>
+  <%= @user.updated_at %>
+  <br>
+  <strong>Notifications:</strong>
+  <%= @user.notification_enable %> <%= link_to "click here to toggle", heaven_notification_toggle_path(:user_id => @user.id) %>
+  <br>
+  <h5>Products</h5>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Barcode</th>
+        <th>User</th>
+        <th>Bid enable</th>
+        <th>Bid status</th>
+        <th>Price</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.barcode %></td>
+          <td>
+            <% User.find(product.user_id) do |usr| %>
+              <%= usr.first_name %>
+              <%= link_to usr.first_name, heaven_show_user_path(:user_id => usr.id) %>
+            <% end %>
+          </td>
+          <td><%= product.bid_enable %></td>
+          <td><%= product.bid_status %></td>
+          <td><%= product.price %></td>
+          <td><%= link_to 'Show', product %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+<% else %>
+  <H1> 404 - Page not found </H1>
+<% end %>
 <% if @reviews.count > 0 %>
   <table>
     <thead>

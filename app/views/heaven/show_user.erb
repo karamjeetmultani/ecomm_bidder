@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% if params.has_key?(:user_id) %>
+<% if(@user) %>
 
     <strong>First Name:</strong>
     <%= @user.first_name %>
