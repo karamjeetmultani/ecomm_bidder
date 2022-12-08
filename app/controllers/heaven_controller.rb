@@ -52,6 +52,6 @@ class HeavenController < ApplicationController
     @products = current_user.products
   end
   def messages
-    @notifications = current_user.notifications
+    @notifications = current_user.notifications.order(updated_at: :desc)
   end
 end

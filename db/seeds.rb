@@ -37,3 +37,5 @@ end
 AddressType.create(:address_type => "billing")
 AddressType.create(:address_type => "shipping")
 User.update_all(:notification_enable => true)
+User.find(1).update(:first_name => "Karamjeet", :last_name => "Singh")
+User.find(2).update(:first_name => "Jacob", :last_name => "Dichter")
