@@ -16,6 +16,7 @@ class CreateTables < ActiveRecord::Migration[5.2]
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
       t.integer "address_type_id"
+      t.integer "user_id"
     end
 
     create_table "bids", force: :cascade do |t|
@@ -51,7 +52,7 @@ class CreateTables < ActiveRecord::Migration[5.2]
     end
 
     create_table "orders", force: :cascade do |t|
-      t.string "products"
+      t.integer "product"
       t.integer "user_id"
       t.integer "address_id"
       t.string "status"

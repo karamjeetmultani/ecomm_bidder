@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_12_06_024757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "address_type_id"
+    t.integer "user_id"
   end
 
   create_table "bids", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -63,7 +64,7 @@ ActiveRecord::Schema.define(version: 2022_12_06_024757) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "products"
+    t.integer "product"
     t.integer "user_id"
     t.integer "address_id"
     t.string "status"

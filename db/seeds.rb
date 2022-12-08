@@ -13,6 +13,9 @@
   # user = User.create!({:email => "#{first_name}_#{last_name}_#{usr}@sample.com", :password => "P@ssw0rd987654321", :password_confirmation => "P@ssw0rd987654321", :first_name => first_name, :last_name => last_name, :phone_number => 1111111111})
   user = User.create!({:email => "example#{usr}@sample.com", :password => "password", :password_confirmation => "password", :first_name => first_name, :last_name => last_name, :phone_number => "1111111111#{usr}".to_i})
   puts user
+
+  Address.create(:street => "#{usr}1-#{usr}5 street", :city => Faker::Address.city, :state =>  Faker::Address.state, :zipcode => 23432, :address_type_id => 2, :user_id => user.id)
+
   user.create_role(:role_type => 'admin')
   (0..4).each do |val|
     ["open", "closed"].each do |p|
