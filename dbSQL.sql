@@ -27,6 +27,7 @@ select * from reviews limit 1;
 select * from roles limit 1;
 select * from users limit 1;
 
+select * from users limit 1;
 
 
 select count(*) from addresses group by address_type_id;
@@ -39,3 +40,20 @@ select sum(price) as total_price from products;
 select max(price) as total_price from products;
 select min(price) as total_price from products;
 select count(*) as total_price from products;
+
+select count(*) from products where price > (select avg(price) from products);
+select * from products where price > (select avg(price) from products);
+select count(*) from products group by user_id;
+select * from products where name like '%er%';
+
+select * from products where bid_status = "open" and user_id in (select id from users);
+select * from products where bid_status = "closed" and user_id in (select id from users);
+select count(*) from products where bid_status = "open" and user_id in (select id from users);
+select count(*) from products where bid_status = "closed" and user_id in (select id from users);
+select count(*) from products where user_id in (select id from users);
+select * from bids;
+
+select * from notifications where user_id in (select id from users );
+
+
+
