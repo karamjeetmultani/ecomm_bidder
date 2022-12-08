@@ -11,7 +11,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false', async: true %>
   </head>
   <body>
-    <%= DateTime.now %> <br>
+    <%#DateTime.now %> <br>
     <% if current_user %>
       Welcome <%= current_user.first_name %>, <%= current_user.last_name %> <%= current_user.email %> <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <br>
